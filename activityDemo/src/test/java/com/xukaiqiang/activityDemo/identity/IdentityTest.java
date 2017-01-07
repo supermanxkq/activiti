@@ -40,6 +40,11 @@ public class IdentityTest {
 		user1.setEmail("234@qq.com");
 		user1.setPassword("123456");
 		identityService.saveUser(user1); // 添加用户
+		User user2 = new UserEntity(); // 实例化用户实体
+		user2.setId("zhangsan");
+		user2.setEmail("234@qq.com");
+		user2.setPassword("123456");
+		identityService.saveUser(user2); // 添加用户
 	}
 
 	/**
@@ -52,7 +57,7 @@ public class IdentityTest {
 	}
 
 	/**
-	 * 测试添加组
+	 * 测试添加组（角色）
 	 */
 	@Test
 	public void testSaveGroup() {
@@ -60,6 +65,9 @@ public class IdentityTest {
 		Group group = new GroupEntity(); // 实例化组实体
 		group.setId("test");
 		identityService.saveGroup(group);
+		Group group1 = new GroupEntity(); // 实例化组实体
+		group1.setId("dev");
+		identityService.saveGroup(group1);
 	}
 
 	/**
@@ -77,7 +85,8 @@ public class IdentityTest {
 	@Test
 	public void testSaveMembership() {
 		IdentityService identityService = processEngine.getIdentityService();
-		identityService.createMembership("lisi", "test");
+		identityService.createMembership("lisi", "dev");
+		identityService.createMembership("zhangsan", "dev");
 	}
 
 	/**
